@@ -1,0 +1,17 @@
+- Can the NFT sale be restarted? If so by who?
+    - Yes it can, by anyone. 
+
+
+- What problems do you find with the `_mint()` function?
+    - Since it can be predicted by a sophisticated attacker, using block.timestamp to create a random index on the `randomIndex()`function can be a problem. Attackers may use this to their advantage and mint NFT's with rarer attributes.
+
+
+- Why is this contract not susceptible to integer overflow/wrapping ? Would this still be true on the previous major solidity version ?
+    - Since version 0.8 of the Solidity compiler, integer overflows and underflows are automatically checked by the compiler itself. If there is any possibility for such, the transaction will be reverted.  
+
+
+- Would you change something on this contract ?
+    - A license identifier should be added to the top of the contract.
+    - I would change the **||** operator to **&&** on the `startSale()` function' `require()` method.
+    - I would change our `randomIndex()` function, and create our randomness using a tool like the ChainLink oracle.
+    - I would delete our `getPrice()` function and use a constant price. 
