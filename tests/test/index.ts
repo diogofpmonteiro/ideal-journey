@@ -20,13 +20,15 @@ describe("AuctionSale", function () {
   describe("list", function () {
     // make sure the signer is marked as the auction seller
     it("marks caller as the auction seller", async () => {
-      const test = (await contract.signer) === contract.seller;
-      expect(test);
+      expect(contract.signer === contract.seller);
     });
+
     // make sure we can create an auction with the list function
     it("can create an auction with the list function", async () => {
-      // const test = await contract.list();
-      // expect(test).to.equal();
+      const test = await contract.deployed();
+      const reservePrice = ethers.utils.parseEther(String(1));
+
+      await test.list(0, 1, reservePrice, 1);
     });
 
     // make sure we can bid on an auction with the bid function

@@ -67,11 +67,10 @@ contract TokenProposals {
     using Counters for Counters.Counter;
     Counters.Counter private _salesIDs;
     Counters.Counter private _proposalIDs;
-
-    address payable owner;
+    address private owner;
 
     constructor() {
-        owner = payable(msg.sender);
+        owner = msg.sender;
     }
 
     struct Proposal {
@@ -81,7 +80,12 @@ contract TokenProposals {
         uint256 price;
     }
 
-    function list(uint256 _assetId, uint256 _amount) external {}
+    function list(uint256 _assetId, uint256 _amount) external {
+        // initialize variables and function logic
+
+        // emit list event
+        emit List(_assetId, seller, _assetId, _amount);
+    }
 
     function propose(uint256 _saleId, uint256 _amount)
         external
@@ -105,5 +109,8 @@ contract TokenProposals {
     function accept(uint256 _saleId, uint256 _proposalId)
         external
         returns (bool)
-    {}
+    {
+        // initialize and logic
+        // emit event
+    }
 }
